@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:p="http://www.springframework.org/schema/p"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans  
+               http://www.springframework.org/schema/beans/spring-beans-3.0.xsd">
+
+	<bean id="studentbean" class="com.framework.Student">
+		<property name="name" value="Jaganatha"></property>
+	</bean>
+	<bean id="employee" class="com.framework.Employee">
+		<constructor-arg type="int" value="16"></constructor-arg>
+		<constructor-arg value="maddy"></constructor-arg>
+	</bean>
+	<bean id="engine" class="com.framework.Engine">
+		<constructor-arg value="500"></constructor-arg>
+		<constructor-arg value="BS4"></constructor-arg>
+		<constructor-arg value="Hyundai creta"></constructor-arg>
+	</bean>
+	<bean id="car" class="com.framework.Car">
+		<constructor-arg value="2012"></constructor-arg>
+		<constructor-arg value="blue"></constructor-arg>
+		<constructor-arg>
+			<ref bean="engine" />
+		</constructor-arg>
+	</bean>
+	<bean id="questionanswer" class="com.framework.Question">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Tell me about krishna?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<value>Krishna is King of king's</value>
+				<value>Krishna is incarnation of Lord Maha Vishnu</value>
+				<value>the lord never steps out of vaikunta</value>
+				<value>He frees kama, rodha, vancha</value>
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="ans1" class="com.framework.AnswerKrishna">
+		<constructor-arg type="int" value="1"></constructor-arg>
+		<constructor-arg value="I will be there for who need me"></constructor-arg>
+		<constructor-arg value="krishna"></constructor-arg>
+	</bean>
+	<bean id="ans2" class="com.framework.AnswerKrishna">
+		<constructor-arg type="int" value="2"></constructor-arg>
+		<constructor-arg value="Iam the everything"></constructor-arg>
+		<constructor-arg value="jaganatha"></constructor-arg>
+	</bean>
+	<bean id="qk" class="com.framework.QuestionKrishna">
+		<constructor-arg type="int" value="1"></constructor-arg>
+		<constructor-arg value="what are the solutions given by krishna?"></constructor-arg>
+		<constructor-arg>
+			<list>
+				<ref bean="ans1" />
+				<ref bean="ans2" />
+			</list>
+		</constructor-arg>
+	</bean>
+	<bean id="rover" class="com.framework.Rangerover">
+		<constructor-arg value="LandRover"></constructor-arg>
+		<constructor-arg value="TATAGroup"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key="AutoBiography" value="vishnu"></entry>
+				<entry key="Defender" value="balaji"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+	<bean id="answer1" class="com.framework.Answer">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Java is a Programming Language"></constructor-arg>
+		<constructor-arg value="12/12/2001"></constructor-arg>
+	</bean>
+	<bean id="answer2" class="com.framework.Answer">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Java is a Platform"></constructor-arg>
+		<constructor-arg value="12/12/2003"></constructor-arg>
+	</bean>
+
+	<bean id="user1" class="com.framework.User">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="Arun Kumar"></constructor-arg>
+		<constructor-arg value="arun@gmail.com"></constructor-arg>
+	</bean>
+	<bean id="user2" class="com.framework.User">
+		<constructor-arg value="2"></constructor-arg>
+		<constructor-arg value="Varun Kumar"></constructor-arg>
+		<constructor-arg value="Varun@gmail.com"></constructor-arg>
+	</bean>
+
+	<bean id="q" class="com.framework.QuestionUA">
+		<constructor-arg value="1"></constructor-arg>
+		<constructor-arg value="What is Java?"></constructor-arg>
+		<constructor-arg>
+			<map>
+				<entry key-ref="answer1" value-ref="user1"></entry>
+				<entry key-ref="answer2" value-ref="user2"></entry>
+			</map>
+		</constructor-arg>
+	</bean>
+
+	<bean id="e1" class="com.framework.Employee1">
+		<constructor-arg value="101"></constructor-arg>
+		<constructor-arg value="Sachin"></constructor-arg>
+	</bean>
+
+	<bean id="address1" class="com.framework.Address1">
+		<constructor-arg value="21,Lohianagar"></constructor-arg>
+		<constructor-arg value="Ghaziabad"></constructor-arg>
+		<constructor-arg value="UP"></constructor-arg>
+		<constructor-arg value="USA"></constructor-arg>
+	</bean>
+
+	<bean id="e2" class="com.framework.Employee1" parent="e1">
+		<constructor-arg ref="address1"></constructor-arg>
+	</bean>
+
+	<bean id="state" class="com.setters.State">
+		<property name="country" value="India">
+		</property>
+		<property name="town">
+			<value>Nalgonda</value>
+		</property>
+		<property name="nationalAnimal">
+			<value>Tiger</value>
+		</property>
+	</bean>
+	<bean id="iron" class="com.setters.IronMan"></bean>
+	<bean id="sheild" class="com.setters.Sheild" autowire="byType"></bean>
+	<bean id="dc" class="com.setters.Aquaman" factory-method="getAquaman"></bean>
+	<bean id="dummy" class="com.setters.Drawable"></bean>
+	<bean id="shape" class="com.setters.Drawable" factory-method="getDiagram"
+		factory-bean="dummy"></bean>
+</beans>  
